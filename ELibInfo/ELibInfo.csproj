@@ -4,6 +4,9 @@
     <RootNamespace>OpenEpl.ELibInfo</RootNamespace>
     <AssemblyName>OpenEpl.ELibInfo</AssemblyName>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Title>ELibInfo</Title>
+    <Description>A library to fetch the information of Epl Lib (*.fne)</Description>
+    <Tags>EPL</Tags>
     <Authors>OpenEpl</Authors>
     <Copyright>A free and unencumbered software released into the public domain (https://unlicense.org/)</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
