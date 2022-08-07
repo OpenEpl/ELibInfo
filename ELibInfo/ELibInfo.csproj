@@ -11,6 +11,10 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>1591;1701;1702</NoWarn>
     <PackageReadmeFile>docs/README.md</PackageReadmeFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   
   <ItemGroup>
@@ -23,11 +27,15 @@
       <PackageCopyToOutput>True</PackageCopyToOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="../README.md" Pack="true" PackagePath="/docs"/>
+    <None Include="../README.md" Pack="true" PackagePath="/docs" />
   </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="JsonSubTypes" Version="1.9.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Collections.Immutable" Version="6.0.0" />
   </ItemGroup>
