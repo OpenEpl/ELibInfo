@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ELibInfo", "ELibInfo\ELibInfo.csproj", "{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE} = {E133F333-1A9A-4C4C-94D0-76BC1CB796AE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExportELibInfo", "ExportELibInfo\ExportELibInfo.vcxproj", "{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebugELibInfo", "DebugELibInfo\DebugELibInfo.csproj", "{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{F4F19826-C562-4AA5-B7C6-96E39DFA49D0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Debug|x86.Build.0 = Debug|Any CPU
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{83E53FC1-309C-4913-9F7B-890CE4DCD6D8}.Release|x86.Build.0 = Release|Any CPU
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Debug|Any CPU.Build.0 = Debug|Win32
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Debug|x86.Build.0 = Debug|Win32
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Release|Any CPU.Build.0 = Release|Win32
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Release|x86.ActiveCfg = Release|Win32
+		{E133F333-1A9A-4C4C-94D0-76BC1CB796AE}.Release|x86.Build.0 = Release|Win32
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Debug|x86.Build.0 = Debug|Any CPU
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A5CCA4C-E3FF-4AA3-8DA1-43F81BF622CB}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B69C205-DED4-4C1B-977E-68ED0F6D8308}
+	EndGlobalSection
+EndGlobal
