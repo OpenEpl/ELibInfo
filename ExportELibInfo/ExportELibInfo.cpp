@@ -87,7 +87,7 @@ DATA_TYPE UnitPropertyTypeToDataType(PLIB_INFO pLibInfo, SHORT shtType)
 	case UD_COLOR_BACK:
 		return SDT_INT;
 	case UD_FONT:
-		return pLibInfo->m_nDataTypeCount + 3;
+		return pLibInfo->m_nDataTypeCount + 4;
 	default:
 		return 0;
 	}
