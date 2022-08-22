@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo
 {
@@ -11,17 +11,17 @@ namespace OpenEpl.ELibInfo
         public string EnglishName { get; set; }
         public string Description { get; set; }
 
-        [DefaultValue(ELibDeprecatedLevel.None)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ELibDeprecatedLevel Deprecated { get; set; } = ELibDeprecatedLevel.None;
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonConverter(typeof(TrivialValueJsonConverter))]
         public object Default { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonSerializer.Serialize(this, JsonUtils.Options);
         }
     }
 }

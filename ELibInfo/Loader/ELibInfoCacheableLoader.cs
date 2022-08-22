@@ -2,8 +2,8 @@
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
+using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo.Loader
 {
@@ -70,11 +70,17 @@ namespace OpenEpl.ELibInfo.Loader
         private const string FileExt = ".v1.json";
         private void SerializeToFile(string path, ELibManifest libInfo)
         {
-            File.WriteAllText(path, JsonConvert.SerializeObject(libInfo), Encoding.UTF8);
+            using (var stream = File.Open(path, FileMode.Create))
+            {
+                JsonSerializer.Serialize(stream, libInfo, JsonUtils.Options);
+            }
         }
         private ELibManifest DeserializeFromFile(string path)
         {
-            return JsonConvert.DeserializeObject<ELibManifest>(File.ReadAllText(path, Encoding.UTF8));
+            using (var stream = File.OpenRead(path))
+            {
+                return JsonSerializer.Deserialize<ELibManifest>(stream, JsonUtils.Options);
+            }
         }
         private ELibManifest LoadFromSource(Guid guid, string fileName, Version version)
         {

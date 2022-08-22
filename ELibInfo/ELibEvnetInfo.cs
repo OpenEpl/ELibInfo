@@ -1,7 +1,8 @@
 ﻿using System.Collections.Immutable;
 using System.ComponentModel;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo
 {
@@ -10,19 +11,17 @@ namespace OpenEpl.ELibInfo
         public string Name { get; set; }
         public string Description { get; set; }
 
-        [DefaultValue(ELibDeprecatedLevel.None)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ELibDeprecatedLevel Deprecated { get; set; } = ELibDeprecatedLevel.None;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int ReturnDataType { get; set; }
 
         public ImmutableArray<ELibParameterInfo> Parameters { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonSerializer.Serialize(this, JsonUtils.Options);
         }
     }
 }
