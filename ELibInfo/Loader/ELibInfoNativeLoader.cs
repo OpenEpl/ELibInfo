@@ -11,7 +11,7 @@ namespace OpenEpl.ELibInfo.Loader
 {
     public class ELibInfoNativeLoader : IELibInfoLoader
     {
-        private const string DefaultBinFileName = "ExportELibInfoV1.exe";
+        private const string DefaultBinFileName = "ExportELibInfoV2.exe";
 
         public string BinPath { get; }
 

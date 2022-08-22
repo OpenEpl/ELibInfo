@@ -67,7 +67,7 @@ namespace OpenEpl.ELibInfo.Loader
             Source = source;
         }
 
-        private const string FileExt = ".v1.json";
+        private const string FileExt = ".v2.json";
         private void SerializeToFile(string path, ELibManifest libInfo)
         {
             using (var stream = File.Open(path, FileMode.Create))

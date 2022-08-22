@@ -21,7 +21,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Content Include="$(SolutionDir)ExportELibInfo/$(Configuration)/ExportELibInfoV1.exe">
+    <Content Include="$(SolutionDir)ExportELibInfo/$(Configuration)/ExportELibInfoV2.exe">
       <Link>%(Filename)%(Extension)</Link>
       <Pack>true</Pack>
       <PackagePath>contentFiles/any/any;content</PackagePath>

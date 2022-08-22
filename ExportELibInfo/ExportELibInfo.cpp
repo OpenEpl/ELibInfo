@@ -298,7 +298,7 @@ int main()
 				writer.Int(type.m_dwUnitBmpID);
 			}
 		}
-		writer.Key(L"Evnets");
+		writer.Key(L"Events");
 		writer.StartArray();
 		intptr_t pEvent = reinterpret_cast<intptr_t>(type.m_pEventBegin);
 		for (int j = 0; j < type.m_nEventCount; j++)

@@ -6,7 +6,7 @@ using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo
 {
-    public class ELibEvnetInfo
+    public class ELibEventInfo
     {
         public string Name { get; set; }
         public string Description { get; set; }

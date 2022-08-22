@@ -12,7 +12,7 @@ namespace OpenEpl.ELibInfo
         public string Name { get; set; }
         public string EnglshName { get; set; }
         public string Description { get; set; }
-        public ImmutableArray<ELibEvnetInfo> Evnets { get; set; }
+        public ImmutableArray<ELibEventInfo> Events { get; set; }
         public ImmutableArray<ELibMemberInfo> Members { get; set; }
         public ImmutableArray<int> Methods { get; set; }
 
