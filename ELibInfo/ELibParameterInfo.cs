@@ -1,5 +1,6 @@
-﻿using System.ComponentModel;
-using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo
 {
@@ -9,24 +10,22 @@ namespace OpenEpl.ELibInfo
         public int DataType { get; set; }
         public string Description { get; set; }
 
-        [DefaultValue(false)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Optional { get; set; } = false;
 
-        [DefaultValue(false)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool VarArgs { get; set; } = false;
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonConverter(typeof(TrivialValueJsonConverter))]
         public object Default { get; set; }
 
-        [DefaultValue(ELibReceiveFlags.None)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ELibReceiveFlags ReceiveFlags { get; set; } = ELibReceiveFlags.None;
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonSerializer.Serialize(this, JsonUtils.Options);
         }
     }
 }

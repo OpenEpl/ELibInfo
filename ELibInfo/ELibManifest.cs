@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Immutable;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using OpenEpl.ELibInfo.Internal;
+
 namespace OpenEpl.ELibInfo
 {
     public class ELibManifest
     {
+        [JsonConverter(typeof(AdaptiveGuidJsonConverter))]
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public string FileName { get; set; }
-        [JsonConverter(typeof(VersionConverter))]
         public Version Version { get; set; }
         public int VersionCode { get; set; }
-        [JsonConverter(typeof(VersionConverter))]
         public Version MinRequiredEplVersion { get; set; }
-        [JsonConverter(typeof(VersionConverter))]
         public Version MinRequiredKrnlnVersion { get; set; }
         public string Description { get; set; }
         public ImmutableArray<ELibDataTypeInfo> DataTypes { get; set; }
@@ -25,7 +25,7 @@ namespace OpenEpl.ELibInfo
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonSerializer.Serialize(this, JsonUtils.Options);
         }
     }
 }

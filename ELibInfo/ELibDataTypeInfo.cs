@@ -1,16 +1,12 @@
-﻿using System.Collections.Immutable;
-using System.ComponentModel;
-using JsonSubTypes;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System;
+using System.Collections.Immutable;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo
 {
-    [JsonConverter(typeof(JsonSubtypes), "Kind")]
-    [JsonSubtypes.KnownSubType(typeof(ELibObjectInfo), ELibDataTypeKind.Object)]
-    [JsonSubtypes.KnownSubType(typeof(ELibEnumInfo), ELibDataTypeKind.Enum)]
-    [JsonSubtypes.KnownSubType(typeof(ELibComponentInfo), ELibDataTypeKind.Component)]
-    [JsonSubtypes.FallBackSubType(typeof(ELibObjectInfo))]
+    [JsonConverter(typeof(ELibDataTypeInfoJsonConverter))]
     public abstract class ELibDataTypeInfo
     {
         public string Name { get; set; }
@@ -20,61 +16,56 @@ namespace OpenEpl.ELibInfo
         public ImmutableArray<ELibMemberInfo> Members { get; set; }
         public ImmutableArray<int> Methods { get; set; }
 
-        [DefaultValue(ELibDeprecatedLevel.None)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ELibDeprecatedLevel Deprecated { get; set; } = ELibDeprecatedLevel.None;
 
-        [DefaultValue(ELibDataTypeKind.Object)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [JsonConverter(typeof(StringEnumConverter))]
         public abstract ELibDataTypeKind Kind { get; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonSerializer.Serialize(this, JsonUtils.Options);
         }
     }
     public class ELibObjectInfo : ELibDataTypeInfo
     {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public override ELibDataTypeKind Kind => ELibDataTypeKind.Object;
     }
     public class ELibEnumInfo : ELibDataTypeInfo
     {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public override ELibDataTypeKind Kind => ELibDataTypeKind.Enum;
     }
     public class ELibComponentInfo : ELibDataTypeInfo
     {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public override ELibDataTypeKind Kind => ELibDataTypeKind.Component;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int ImageId { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public int ImageId { get; set; } = 0;
 
-        [DefaultValue(false)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool IsContainer { get; set; } = false;
 
-        [DefaultValue(false)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool IsTabControl { get; set; } = false;
 
-        [DefaultValue(false)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool IsFunctional { get; set; } = false;
 
-        [DefaultValue(true)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool CanFocus { get; set; } = true;
 
         /// <summary>
         /// If <see cref="CanFocus"/> is <see langword="false"/>, then this property must be <see langword="true"/>.
         /// </summary>
-        [DefaultValue(false)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool NoTabStopByDefault { get; set; } = false;
 
-        [DefaultValue(false)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool IsMessageFilter { get; set; } = false;
     }
 }

@@ -4,7 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
+using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo.Loader
 {
@@ -101,7 +102,7 @@ namespace OpenEpl.ELibInfo.Loader
             }
             try
             {
-                return JsonConvert.DeserializeObject<ELibManifest>(result);
+                return JsonSerializer.Deserialize<ELibManifest>(result, JsonUtils.Options);
             }
             catch (Exception e)
             {

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using OpenEpl.ELibInfo.Internal;
 
 namespace OpenEpl.ELibInfo
 {
@@ -15,7 +16,7 @@ namespace OpenEpl.ELibInfo
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonSerializer.Serialize(this, JsonUtils.Options);
         }
     }
 }
