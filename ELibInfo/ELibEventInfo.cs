@@ -12,6 +12,7 @@ namespace OpenEpl.ELibInfo
         public string Description { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ELibDeprecatedLevel Deprecated { get; set; } = ELibDeprecatedLevel.None;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
