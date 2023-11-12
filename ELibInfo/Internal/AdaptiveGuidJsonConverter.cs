@@ -10,7 +10,8 @@ namespace OpenEpl.ELibInfo.Internal
     {
         public override Guid Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            return Guid.Parse(reader.GetString());
+            var x = reader.GetString();
+            return Guid.ParseExact(x.Replace("-", "").Replace("{", "").Replace("}", ""), "N");
         }
 
         public override void Write(Utf8JsonWriter writer, Guid value, JsonSerializerOptions options)
